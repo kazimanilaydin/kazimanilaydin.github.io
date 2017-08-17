@@ -1,0 +1,120 @@
+
+*{margin: 0;padding: 0;font:inherit;-moz-box-sizing: border-box;-webkit-box-sizing: border-box; box-sizing: border-box;font-weight: normal;}
+html{font-family: sans-serif, arial;}
+
+body{overflow-y:scroll;}
+
+#app {margin-top:-5px;}
+
+.scroll::-webkit-scrollbar {width: 8px;}
+.scroll::-webkit-scrollbar-track {background: #cecece;}
+.scroll::-webkit-scrollbar-thumb {background: #a4a4a4;}
+
+a, a:hover, a:active, a:visited{color:none;text-decoration: none;}
+
+.hidden{display: none;}
+
+.tab-lists{position:relative;margin:20px 0;display:flex;text-align:center;justify-content:center;font-size:48px;list-style: none;}         
+.tab-lists li{/*display:flex;margin:0 10px;float:left;*/    float: left; width: 33%;}      
+.tab-lists li a{position:relative;cursor:pointer;color: rgba(255, 255, 255, 0.60);transition: all .3s ease-in-out;}
+.tab-lists li a:hover, .tab-lists li a.is-active{color: rgba(255, 255, 255, 1);border-bottom:4px solid;}
+
+        ._modul_list_inline{text-align:center;padding-left: 0;list-style: none;margin-bottom:0px;}
+._module_list_inline > li {display: inline-block;padding-right: 5px;padding-left: 5px;}
+
+._module_list_inline li {
+    height: 160px;
+    margin: 5px;
+        border: 4px solid #eaeaea;
+    border-radius: 0px;
+    /* background: #009688; */
+    color: white;
+}
+
+.zoomIMG li:hover{transform: scale(1.05);}
+.zoomIMG li{transition: all .2s ease-in-out;}
+
+._module_list_inline ._app_block { float:left;width:120px;background: rgba(0, 0, 0, 0.37); }
+
+._module_list_inline ._app_block:hover {
+transform:  scale(1.03);
+-webkit-transform:  scale(1.03);
+-ms-transform:  scale(1.03);
+cursor:pointer;
+}
+.accounts-links{list-style:none;text-align: center;margin: 40px 0;}
+.accounts-links li{font-size:32px;width: 20%;float: left;}
+.accounts-links li a{position:relative;cursor:pointer;color: rgba(255, 255, 255, 0.80);padding: 5px 7px; border: 1px dashed;    background: rgba(121, 121, 121, 0.03);border-radius:50%;transition: color .3s ease;}
+.accounts-links li a:hover, .accounts-links li a.is-active{background:rgba(121, 121, 121, 0.05);color: #000;}
+
+.background-random{/* transform:scale(1.1);*/width: 100%;height: 100%;position: fixed;top: 0; left: 0;transition: all 1s cubic-bezier(0.65, 0.05, 0.36, 1)}
+.transition-color{transition: color 1s cubic-bezier(0.65, 0.05, 0.36, 1);}
+
+.scrollToTopButton {
+position: fixed;
+background: rgba(0, 0, 0, 0.15);
+width: 100%;
+border-radius: 0;
+/* padding: 20px; */
+font-size: 64px;
+color: #ffffff;
+text-shadow: 0px 0px 1px black;
+border: none;
+left: 0px;
+bottom: 0;
+cursor: pointer;
+z-index: 999;
+}
+.prevPageButton {
+position: fixed;
+background: none;
+font-size: 48px;
+width: auto;
+padding: 5px;
+text-shadow: 0px 0px 1px black;
+height: auto;
+color: #ffffff;
+border: none;
+left: 0px;
+margin-top: -37.5px;
+top: 50%;
+cursor: pointer;
+}
+.nextPageButton {
+position: fixed;
+background: none;
+font-size: 48px;
+width: auto;
+padding: 5px;
+text-shadow: 0px 0px 1px black;
+height: auto;
+color: #ffffff;
+border: none;
+right: 0px;
+top: 50%;
+margin-top: -37.5px;
+cursor: pointer;
+}
+
+.prevPageButton:hover,.nextPageButton:hover, .scrollToTopButton:hover{transform: scale(1.1);transition: all .4s ease;}
+
+@media screen and (max-width: 400px) { }
+
+.blur{filter: blur(1px);transform: scale(1.1);}
+
+
+.profile-tags {color:white; list-style: none; font-size: 18px;text-align: center; padding: 10px 0;}
+.profile-tags li {display:inline-block;padding: 10px 10px; margin: 5px; border: 1px solid ;border-radius: 32px;}
+
+.me-info p{margin: 15px 0;}
+.me-info{text-align: justify;font-size:20px; color:rgba(255, 255, 255, 0.95);}
+
+.randomHelloText{margin: 40px 0;text-align: center;font-size: 48px;color: rgba(255, 255, 255, 0.85);transition: all 2s ease-in-out;transform:rotate(3deg);text-transform: uppercase;}
+.profilePhoto{width: 120px;height: 120px;
+padding: 3px;
+background: rgba(234, 234, 234, 0.85);
+border-radius: 50%;
+box-shadow: 0px 0px 1px 1px #403f3f;}
+.profileName{color: white;margin: 20px 0;font-size: 24px;}
+
+.tabName{font-size: 12px;top: -10px; width: 100%;position: absolute;text-transform: capitalize;}

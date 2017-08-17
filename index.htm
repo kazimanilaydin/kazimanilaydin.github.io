@@ -1,0 +1,172 @@
+<!-- 
+❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤ 
+        _  _    _             _                  _                _                           _  _                    _  _        
+       (_)| |  | |           | |    _     ____  | |              (_)                         (_)| |                  | |(_)       
+  __ _  _ | |_ | |__   _   _ | |__ (_)   / __ \ | | __ __ _  ____ _  _ __ ___    __ _  _ __   _ | |  __ _  _   _   __| | _  _ __  
+ / _` || || __|| '_ \ | | | || '_ \     / / _` || |/ // _` ||_  /| || '_ ` _ \  / _` || '_ \ | || | / _` || | | | / _` || || '_ \ 
+| (_| || || |_ | | | || |_| || |_) |_  | | (_| ||   <| (_| | / / | || | | | | || (_| || | | || || || (_| || |_| || (_| || || | | |
+ \__, ||_| \__||_| |_| \__,_||_.__/(_)  \ \__,_||_|\_\\__,_|/___||_||_| |_| |_| \__,_||_| |_||_||_| \__,_| \__, | \__,_||_||_| |_|
+  __/ |                                  \____/                                                             __/ |                 
+ |___/                                                                                                     |___/    
+
+❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤  
+--> 
+<!DOCTYPE html>
+<html>
+	<head>
+		<title id="title">Kazım Anıl AYDIN | [ Think & Do ]</title>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="./js/vue.min.js"></script>
+        <script type="text/javascript" src="./js/app.js"></script>
+        <link href="./css/app.css" media="all" rel="stylesheet" type="text/css">
+        <link href="./css/animate.min.css" media="all" rel="stylesheet" type="text/css">
+        <link href="./css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css">
+	</head>
+	<body class="scroll">
+		<div id="app">
+            <div :style="{'background': backgrnd(), 'backgroundPosition': backgrndPos() }" class="background-random"></div>
+            <div class="position:relative;">
+                <div style="max-width: 500px;width: 100%; background: none; margin: 10px auto 0;">
+                    <div style="width: 100%; padding: 10px;">
+                        <div style="height: 80px;font-size: 48px;text-align: center;">
+                            <ul class="tab-lists">
+                                <li>
+                                    <a id="link-tab-1" :href="linkTo('me')" v-bind:class="[isActive == 'me' ? 'is-active' : '' , 'link-tab-1']">
+                                        <span class="tabName">Me</span>
+                                        <span class="mdi mdi-infinity"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="link-tab-2" :href="linkTo('profile')" v-bind:class="[isActive == 'profile' ? 'is-active' : '' , 'link-tab-2']">          
+                                        <span class="tabName">Profile</span>
+                                        <span class="mdi mdi-sigma-lower"></span>
+                                    </a>                                        
+                                </li>
+                                <li>
+                                    <a id="link-tab-3" :href="linkTo('links')" v-bind:class="[isActive == 'links' ? 'is-active' : '' , 'link-tab-3']">
+                                        <span class="tabName">Links</span>
+                                        <span class="mdi mdi-link"></span>
+                                    </a>
+                                </li>
+                                <div style="clear:both;"></div>
+                            </ul>
+                        </div>
+                        <div style="width: 100%;background: none;position: relative;">
+                            <div style="padding:10px;">
+                                <div v-show="isActive == 'me'">
+                                    <div class="me-info">
+                                        <p>
+                                            > Hello, my name is Kazım Anıl AYDIN. I am a blogger, developer & student in Samsun, TR. I'm studying at Ondokuz Mayıs University ~ Samsun/TÜRKİYE & studying in Industrial Engineering.
+                                        </p>
+                                        <p>
+                                            > I love traveling (on Nature & Seaside ), I love listening to music (Rap, Hip-hop, Pop [especially `Rap`]). I like watching movies. (Science-fiction, Adventure, Action, Comedy [especially `Science-fiction`]). In addition, I read various books & articles [generally `scientific - technological articles`], I love the World, Animals & Nature...
+                                        </p>
+                                        <p>
+                                            > I am interested in subjects such as information, electronics, programming, robotics, databases, data analysis, cryptography, data mining, artificial intelligence. At the same time, i'm the fan of open source & linux. I use Linux (Ubuntu) and Windows together [`dual OS`]. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div v-show="isActive == 'profile'">
+                                    <div>
+                                        <div style="text-align: center;">
+                                            <img class="profilePhoto" src="./img/profile.jpg">
+                                            <div class="profileName">
+                                                <h1>KΛZIM ΛNIL ΛYDIN</h1>
+                                            </div>
+                                        </div>
+                                        <div style="">
+                                            
+                                            <ul class="profile-tags">
+                                                <li><span class="mdi mdi-map-marker-outline"></span><span style="margin-left: 5px;">Samsun</span></li>
+                                                <li><span class="mdi mdi-bookmark-outline"></span><span style="margin-left: 5px;">Industrial Engineering</span></li>
+                                                <li><span class="mdi mdi-pencil-circle-outline"></span><span style="margin-left: 5px;">Blogger</span></li>
+                                                <li><span class="mdi mdi-pulse"></span><span style="margin-left: 5px;">Thinker</span></li>
+                                                <li><span class="mdi mdi-monitor"></span><span style="margin-left: 5px;">Developer</span></li>
+                                                <div style="clear: both;"></div>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <div class="randomHelloText">{{helloText}}</div>
+                                    <div>
+                                        <div style="font-size: 20px; color:white;margin: 10px 0;">
+                                            <h1>#timeline</h1>
+                                        </div>
+                                        <div>
+                                            <ul class="_module_list_inline _apps_block zoomIMG">
+                                                <li style="background: url(./img/album/2.jpg);background-size: cover;">
+                                                    <div class="_app_block"></div>
+                                                </li>
+                                                <li style="background: url(./img/album/3.jpg);background-size: cover;">
+                                                    <div class="_app_block"></div>
+                                                </li>
+                                                <li style="background: url(./img/album/4.jpg);background-size: cover;">
+                                                    <div class="_app_block"></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-show="isActive == 'links'">
+                                    <div style="position: relative;">
+                                        <div style="text-align: center;margin: 20px 0;">
+                                            <p><span style="color: rgba(255, 255, 255, 0.8);font-size: 100px;" class="mdi mdi-comment-account transition-color"></span></p>
+                                            <p><span style="color: rgba(255, 255, 255, 0.8);font-size: 20px;">Contact me...!</span></p>
+                                        </div>
+                                        <div style="font-size: 48px;color: white;text-align: center;">
+                                            <span class="mdi mdi-chevron-down"></span>
+                                        </div>
+                                        <ul class="accounts-links">
+                                            <li>
+                                                <a href="https://www.linkedin.com/in/kazimanilaydin" target="_blank" >
+                                                    <span class="mdi mdi-linkedin account-icon"></span>
+                                                    <!-- <span class="account-name">Linkedin</span> -->
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://github.com/kazimanilaydin" target="_blank" >
+                                                    <span class="mdi mdi-github-face account-icon"></span>
+                                                    <!-- <span class="account-name">Github</span> -->
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://instagram.com/kazimanilaydin" target="_blank" >
+                                                    <span class="mdi mdi-instagram account-icon"></span>
+                                                    <!-- <span class="account-name">Instagram</span> -->
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://medium.com/@kazimanilaydin" target="_blank" >
+                                                    <span class="mdi mdi-medium account-icon"></span>
+                                                    <!-- <span class="account-name">Medium</span> -->
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://kazimanilaydin.wordpress.com" target="_blank">
+                                                    <span class="mdi mdi-wordpress account-icon"></span>
+                                                    <!-- <span class="account-name">Wordpress</span> -->
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button v-if="scrollToTopButton" v-on:click="scrollToTop" class="scrollToTopButton">
+                    <span class="mdi mdi-chevron-up"></span>
+                </button>
+                <button v-on:click="nextPage()" class="nextPageButton">
+                    <span class="mdi mdi-chevron-right"></span>
+                </button>
+                <button v-on:click="prevPage()" class="prevPageButton">
+                    <span class="mdi mdi-chevron-left"></span>
+                </button>
+            </div>
+        </div>
+    </body>
+</html>
