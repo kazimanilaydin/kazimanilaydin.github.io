@@ -171,7 +171,7 @@ window.addEventListener('load', function(){
                         return false;
                     }
 
-                    window.scrollBy(0, -4);
+                    window.scrollBy(0, -2);
 
                 }, 1);
 
