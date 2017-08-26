@@ -55,7 +55,6 @@ position: fixed;
 background: rgba(0, 0, 0, 0.15);
 width: 100%;
 border-radius: 0;
-/* padding: 20px; */
 font-size: 64px;
 color: #ffffff;
 text-shadow: 0px 0px 1px black;
@@ -64,36 +63,6 @@ left: 0px;
 bottom: 0;
 cursor: pointer;
 z-index: 999;
-}
-.prevPageButton {
-position: fixed;
-background: none;
-font-size: 48px;
-width: auto;
-padding: 5px;
-text-shadow: 0px 0px 1px black;
-height: auto;
-color: #ffffff;
-border: none;
-left: 0px;
-margin-top: -37.5px;
-top: 50%;
-cursor: pointer;
-}
-.nextPageButton {
-position: fixed;
-background: none;
-font-size: 48px;
-width: auto;
-padding: 5px;
-text-shadow: 0px 0px 1px black;
-height: auto;
-color: #ffffff;
-border: none;
-right: 0px;
-top: 50%;
-margin-top: -37.5px;
-cursor: pointer;
 }
 
 .prevPageButton:hover,.nextPageButton:hover, .scrollToTopButton:hover{transform: scale(1.1);transition: all .4s ease;}

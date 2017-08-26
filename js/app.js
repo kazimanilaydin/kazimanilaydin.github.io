@@ -48,7 +48,6 @@ window.addEventListener('load', function(){
                 y: 0
             },
             pages: PAGES,
-            routes: [],
             locale: [],
             languages: [
                 'tr', 'en', 'de', 'es', 'ru', 'cn', 'ja', 'pt', 'fr', 'it', 'ar'
@@ -130,13 +129,10 @@ window.addEventListener('load', function(){
                 var _locale     = _locale.split('-');
                 var _language   = _locale[0];
 
-                var _routes     = window.location.hash.split('/');
-
                 this.locale     = _locale,
                 this.language   = _language,
-                this.routes     = _routes;
 
-                this.setTitleName(_routes[1]);
+                this.setTitleName('profile');
 
                 // console.log('Initial Variables: ', this.locale, this.language, this.routes);
             },
@@ -149,66 +145,6 @@ window.addEventListener('load', function(){
                 var title   = _head + val.toUpperCase();
 
                 document.getElementById('title').innerHTML = title;
-            },
-
-            onKeyUp(event){
-
-                var keyCode = event.keyCode;
-
-                if(keyCode == 37){
-
-                    this.scrollToTop();
-                    return this.prevPage();
-
-                }else if(keyCode == 39){
-
-                    this.scrollToTop();
-                    return this.nextPage();
-
-                }
-
-                return false;
-
-            },
-
-            nextPage(){
-                
-                var _tab        = this.routes[1],
-                    tabs        = this.tabs;
-
-                var index       = tabs.indexOf(_tab);
-
-                var _nextPageId = '';
-                
-                index++;
-
-                if(tabs[index] == undefined){
-                    _nextPageId = index - 1;
-                }else{
-                    _nextPageId = index;
-                }
-
-                this.setTab(tabs[_nextPageId]);
-
-            },
-
-            prevPage(){
-                var _tab        = this.routes[1],
-                    tabs        = this.tabs;
-
-                var index       = tabs.indexOf(_tab);
-
-                var _prevPageId = '';
-                
-                index--;
-
-                if(tabs[index] == undefined){
-                    _prevPageId = index + 1;
-                }else{
-                    _prevPageId = index;
-                }
-
-                this.setTab(tabs[_prevPageId]); 
             },
 
             onScroll(event){        
@@ -225,7 +161,21 @@ window.addEventListener('load', function(){
             },
 
             scrollToTop(){
-                window.scrollTo(0, 0);
+
+                var smoothScroll = window.setInterval(function() {
+                    
+                    var y = window.scrollY;
+
+                    if (y == 0){
+                        window.clearInterval(smoothScroll);
+                        return false;
+                    }
+
+                    window.scrollBy(0, -4);
+
+                }, 1);
+
+
             },
 
             hashChanged(event){
@@ -235,20 +185,6 @@ window.addEventListener('load', function(){
 			showTab(target) {
 				this.isActive = target;
 			},
-
-            goTab() {
-
-                this.pageInit();
-
-                var _tabs       = this.tabs,
-                    location    = this.routes,
-                    targetTab   = location[1];  
-
-                // console.log('Hash Changed: ', location);
-
-                this.setTab(targetTab);
-                          
-            },
 
             setTab(target){
 
@@ -262,30 +198,15 @@ window.addEventListener('load', function(){
                 }
 
                 this.isActive = target;
-                window.location.hash = "#!/" + target + "/" + this.language;
+                window.location.hash = "#!/" + this.language;
             },
 
             initPageTab(target){
 
                 this.pageInit();
 
-                var _tabs       = this.tabs,
-                    location    = this.routes,
-                    targetTab   = location[1];
-                
-                if(targetTab == target){
-                    this.setTab(target);
-                }else{
-                    this.setTab(target);
-                }
-
             },
 
-            linkTo(target) {
-
-                return '#!/' + target + '/' + this.language;
-
-            }
 		},
         beforeDestroy() {
             clearInterval(this.timer);
@@ -293,7 +214,6 @@ window.addEventListener('load', function(){
 	});
 
     window.addEventListener('keyup', function(event){
-        app.hello = 'Merhaba!';
         app.onKeyUp(event);
     });
 });

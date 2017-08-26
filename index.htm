@@ -34,19 +34,19 @@
                         <div style="height: 80px;font-size: 48px;text-align: center;">
                             <ul class="tab-lists">
                                 <li>
-                                    <a id="link-tab-1" :href="linkTo('me')" v-bind:class="[isActive == 'me' ? 'is-active' : '' , 'link-tab-1']">
+                                    <a id="link-tab-1" v-on:click="setTab('me')" v-bind:class="[isActive == 'me' ? 'is-active' : '' , 'link-tab-1']">
                                         <span class="tabName">Me</span>
                                         <span class="mdi mdi-infinity"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a id="link-tab-2" :href="linkTo('profile')" v-bind:class="[isActive == 'profile' ? 'is-active' : '' , 'link-tab-2']">          
+                                    <a id="link-tab-2" v-on:click="setTab('profile')" v-bind:class="[isActive == 'profile' ? 'is-active' : '' , 'link-tab-2']">          
                                         <span class="tabName">Profile</span>
                                         <span class="mdi mdi-sigma-lower"></span>
                                     </a>                                        
                                 </li>
                                 <li>
-                                    <a id="link-tab-3" :href="linkTo('links')" v-bind:class="[isActive == 'links' ? 'is-active' : '' , 'link-tab-3']">
+                                    <a id="link-tab-3" v-on:click="setTab('links')" v-bind:class="[isActive == 'links' ? 'is-active' : '' , 'link-tab-3']">
                                         <span class="tabName">Links</span>
                                         <span class="mdi mdi-link"></span>
                                     </a>
@@ -159,12 +159,6 @@
                 </div>
                 <button v-if="scrollToTopButton" v-on:click="scrollToTop" class="scrollToTopButton">
                     <span class="mdi mdi-chevron-up"></span>
-                </button>
-                <button v-on:click="nextPage()" class="nextPageButton">
-                    <span class="mdi mdi-chevron-right"></span>
-                </button>
-                <button v-on:click="prevPage()" class="prevPageButton">
-                    <span class="mdi mdi-chevron-left"></span>
                 </button>
             </div>
         </div>
