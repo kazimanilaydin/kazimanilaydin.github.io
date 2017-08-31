@@ -10,7 +10,7 @@ const PAGES = {
 window.addEventListener('load', function(){
 	window.app = new Vue({
 		el: '#app',
-        data: {     
+        data: {
             hello: [
                 'Hallo',
                 'Здравствуйте',
@@ -39,8 +39,8 @@ window.addEventListener('load', function(){
             isActive: 'profile',
             titleName: this.isActive,
             tabs: [
-                'me', 
-                'profile', 
+                'me',
+                'profile',
                 'links'
             ],
             scroll: {
@@ -97,7 +97,7 @@ window.addEventListener('load', function(){
 
                 this.indexHelloText++
 
-                return helloText;                            
+                return helloText;
 
             },
 
@@ -147,7 +147,7 @@ window.addEventListener('load', function(){
                 document.getElementById('title').innerHTML = title;
             },
 
-            onScroll(event){        
+            onScroll(event){
                 this.scroll = {
                     x: window.scrollX,
                     y: window.scrollY
@@ -163,7 +163,7 @@ window.addEventListener('load', function(){
             scrollToTop(){
 
                 var smoothScroll = window.setInterval(function() {
-                    
+
                     var y = window.scrollY;
 
                     if (y == 0){
@@ -190,10 +190,10 @@ window.addEventListener('load', function(){
 
                 var _tabs = this.tabs;
 
-                if(!_tabs.includes(target)) { 
+                if(!_tabs.includes(target)) {
 
-                    // console.log('Redirecting: [ PAGE NOT FOUND ]'); 
-                    this.initPageTab('profile'); 
+                    // console.log('Redirecting: [ PAGE NOT FOUND ]');
+                    this.initPageTab('profile');
                     return false;
                 }
 
@@ -216,4 +216,5 @@ window.addEventListener('load', function(){
     window.addEventListener('keyup', function(event){
         app.onKeyUp(event);
     });
+
 });
