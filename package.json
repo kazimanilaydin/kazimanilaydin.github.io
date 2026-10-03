@@ -1,0 +1,17 @@
+{
+  "name": "kazimanilaydin-site",
+  "private": true,
+  "type": "module",
+  "description": "kazimanilaydin.github.io — Think & Do",
+  "scripts": {
+    "build:icons": "node tools/build-icons.mjs",
+    "build:stats": "node tools/build-stats.mjs data/stats.json",
+    "serve": "npx --yes http-server -c-1 -p 8080 ."
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "simple-icons": "^16.33.0"
+  }
+}

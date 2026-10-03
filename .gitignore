@@ -1,0 +1,5 @@
+node_modules
+dist/
+preview/
+_site/
+data/stats.json

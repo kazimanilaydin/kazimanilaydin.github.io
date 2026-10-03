@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kazım Anıl AYDIN | [ Think &amp; Do ]</title>
+    <meta name="description" content="Kazım Anıl Aydın — engineer, developer, thinker. [ Think &amp; Do ] · levántarse y brillar." />
+    <meta name="author" content="Kazım Anıl Aydın" />
+    <meta name="theme-color" content="#020611" />
+    <meta property="og:title" content="Kazım Anıl AYDIN | [ Think &amp; Do ]" />
+    <meta property="og:description" content="Engineer · Developer · Thinker. Follow the white rabbit." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="fonts/orbitron-900.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/jetbrains-mono-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <canvas id="rain" aria-hidden="true"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#profile" aria-label="Home">
+        <span class="brand-mark">K<span class="lam">V</span></span>
+        <span class="brand-name">kazimanilaydin</span>
+      </a>
+      <nav class="tabs" role="tablist" aria-label="Sections">
+        <a role="tab" href="#profile" data-tab="profile">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0" /></svg>
+          <span>Profile</span>
+        </a>
+        <a role="tab" href="#network" data-tab="network">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
+          <span>Network</span>
+        </a>
+        <a role="tab" href="#links" data-tab="links">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1" /></svg>
+          <span>Links</span>
+        </a>
+        <span class="tab-ink" aria-hidden="true"></span>
+      </nav>
+      <div class="clock" title="Local time in Türkiye"><i class="dot"></i><span id="clock">TR --:--:--</span></div>
+    </header>
+
+    <main>
+      <!-- ================================================================ PROFILE -->
+      <section id="view-profile" data-view="profile" class="view" role="tabpanel" aria-label="Profile">
+        <div class="hero hud">
+          <p class="hero-sys"><span>SYS://KAZIMANILAYDIN</span><i class="dot"></i></p>
+          <p class="hero-sys right">TR · UTC+03:00 · EST. 2016</p>
+          <h1 class="name" id="name" aria-label="Kazım Anıl Aydın">KΛZIM ΛNIL ΛYDIN</h1>
+          <p class="motto">[ THINK &amp; DO ]</p>
+          <p class="roles">ENGINEER · DEVELOPER · THINKER</p>
+          <p class="typer" aria-live="polite"><span class="prompt">❯</span><span id="typed"></span><span class="caret"></span></p>
+          <div class="hero-cta">
+            <a class="btn" href="#network">Open network <span aria-hidden="true">⟶</span></a>
+            <a class="btn ghost" href="#links">Contact</a>
+          </div>
+          <svg class="rabbit" id="rabbit" viewBox="0 0 100 120" aria-hidden="true"></svg>
+          <div class="floor" aria-hidden="true"></div>
+        </div>
+
+        <div class="about-grid">
+          <article class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span>anil@think-and-do: ~ — zsh</span></div>
+            <div class="term-body">
+              <p class="cmd"><b>anil@think-and-do</b>:~$ <span class="cmd-typed">neofetch</span></p>
+              <div class="fetch">
+                <svg class="pixel-rabbit" id="pixel-rabbit" viewBox="0 0 200 232" aria-hidden="true"></svg>
+                <div>
+                  <p class="fetch-host"><b>anil@think-and-do</b></p>
+                  <p class="fetch-hr">─────────────────</p>
+                  <dl class="fetch-list">
+                    <div><dt>Name</dt><dd>Kazım Anıl Aydın</dd></div>
+                    <div><dt>Roles</dt><dd>Engineer · Developer · Thinker</dd></div>
+                    <div><dt>Field</dt><dd>Industrial Engineering</dd></div>
+                    <div><dt>Edu</dt><dd>Ordu Uni. · 19 Mayıs Uni. · Amasya Uni. · Vilnius Uni.</dd></div>
+                    <div><dt>Stack</dt><dd>Vue · Nuxt · React · Node.js · Python · Go</dd></div>
+                    <div><dt>Interests</dt><dd>AI · Data Mining · Robotics · Cryptography · Electronics</dd></div>
+                    <div><dt>OS</dt><dd>macOS · Windows · Linux</dd></div>
+                    <div><dt>Music</dt><dd>Rap · Hip-Hop · Pop</dd></div>
+                    <div><dt>Movies</dt><dd>Sci-Fi · Adventure · Action · Comedy</dd></div>
+                    <div><dt>Loves</dt><dd>Travel (nature &amp; seaside) · Animals · Books</dd></div>
+                    <div><dt>Motto</dt><dd>Think &amp; Do · levántarse y brillar</dd></div>
+                    <div><dt>Status</dt><dd>Follow the white rabbit 🐇</dd></div>
+                  </dl>
+                  <p class="swatches" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></p>
+                </div>
+              </div>
+              <p class="cmd"><b>anil@think-and-do</b>:~$ <span class="caret"></span></p>
+            </div>
+          </article>
+
+          <aside class="side-stack">
+            <div class="panel hud hello">
+              <h3 class="panel-title">HELLO.EXE <small id="hello-count"></small></h3>
+              <p class="hello-word" id="hello-word">Hello</p>
+              <p class="panel-cap">[ Think &amp; Do ]</p>
+            </div>
+            <div class="panel hud quick">
+              <h3 class="panel-title">QUICK STATS <span class="chev" aria-hidden="true">››</span></h3>
+              <ul class="kv" id="quick-stats">
+                <li><span>Contributions (1y)</span><b data-stat="contributionsYear">—</b></li>
+                <li><span>Current streak</span><b data-stat="streakLabel">—</b></li>
+                <li><span>Followers</span><b data-stat="followers">—</b></li>
+                <li><span>On GitHub since</span><b>2016</b></li>
+              </ul>
+              <p class="sample-note" data-sample-note hidden>sample numbers</p>
+            </div>
+          </aside>
+        </div>
+
+        <section class="stack" aria-labelledby="stack-title">
+          <h2 class="section-title" id="stack-title"><span>~/stack</span> ls -la</h2>
+          <div class="stack-grid" id="stack-grid"></div>
+        </section>
+      </section>
+
+      <!-- ================================================================ NETWORK -->
+      <section id="view-network" data-view="network" class="view" role="tabpanel" aria-label="Network">
+        <h2 class="net-title">GLOBAL CONNECTIVITY &amp; PERFORMANCE METRICS</h2>
+        <p class="sample-note" data-sample-note hidden>Preview with sample numbers. The live site shows real GitHub data.</p>
+
+        <div class="kpis">
+          <div class="panel hud kpi">
+            <h3 class="panel-title">TOTAL CONTRIBUTIONS <span class="chev" aria-hidden="true">››</span></h3>
+            <div class="kpi-body">
+              <div class="gauge">
+                <svg viewBox="0 0 64 40" aria-hidden="true">
+                  <defs><linearGradient id="gg"><stop offset="0" stop-color="#3be8ff" /><stop offset=".45" stop-color="#3df58a" /><stop offset=".75" stop-color="#ffb84d" /><stop offset="1" stop-color="#ff5d6c" /></linearGradient></defs>
+                  <path d="M6 34a26 26 0 0 1 52 0" fill="none" stroke="url(#gg)" stroke-width="6" stroke-linecap="round" />
+                  <g id="needle" style="transform-origin: 32px 34px"><path d="M30.4 34 32 10l1.6 24Z" fill="#fff" /></g>
+                  <circle cx="32" cy="34" r="4" fill="#081a36" stroke="#fff" stroke-width="1.5" />
+                </svg>
+                <span id="contrib-level">—</span>
+              </div>
+              <div>
+                <p class="big" id="contrib-total">—</p>
+                <p class="unit">last 12 months</p>
+                <svg class="spark" id="contrib-spark" viewBox="0 0 140 24" preserveAspectRatio="none" aria-hidden="true"></svg>
+              </div>
+            </div>
+          </div>
+          <div class="panel hud kpi">
+            <h3 class="panel-title">CURRENT STREAK <span class="chev" aria-hidden="true">››</span></h3>
+            <div class="kpi-row">
+              <p class="big"><span id="streak">—</span> <small>days</small></p>
+              <p class="kpi-right"><span class="ok" id="streak-state">—</span><span class="unit" id="streak-longest"></span></p>
+            </div>
+            <div class="bars" id="daily-bars" aria-hidden="true"></div>
+          </div>
+          <div class="panel hud kpi">
+            <h3 class="panel-title">ACTIVE DAYS <span class="chev" aria-hidden="true">››</span></h3>
+            <div class="kpi-body">
+              <div class="ring">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#2f7bff" /><stop offset="1" stop-color="#3be8ff" /></linearGradient></defs>
+                  <circle cx="32" cy="32" r="25" fill="none" stroke="#1d3f6b" stroke-width="5" />
+                  <circle id="ring" cx="32" cy="32" r="25" fill="none" stroke="url(#rg)" stroke-width="5" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 32 32)" />
+                </svg>
+                <span id="active-pct">—</span>
+              </div>
+              <div>
+                <p class="big"><span id="active-days">—</span> <small id="active-total">/ 365</small></p>
+                <p class="ok" id="active-word">—</p>
+              </div>
+              <div class="bars months" id="month-bars" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <aside class="side">
+            <div class="panel hud">
+              <h3 class="panel-title">TOP LANGUAGES <span class="chev" aria-hidden="true">››</span></h3>
+              <ul class="langs" id="langs"><li class="muted">loading…</li></ul>
+            </div>
+            <div class="panel hud hello small">
+              <h3 class="panel-title">HELLO.EXE</h3>
+              <p class="hello-word" data-hello>Hello</p>
+            </div>
+          </aside>
+
+          <div class="globe-wrap">
+            <div class="globe-halo" aria-hidden="true"></div>
+            <div id="globe" aria-label="Rotating 3D globe with arcs from Türkiye to the world. Drag to rotate."></div>
+            <div class="platform" aria-hidden="true"><i></i><i></i><i></i></div>
+            <p class="globe-hint">drag to rotate</p>
+          </div>
+
+          <aside class="side">
+            <div class="panel hud">
+              <h3 class="panel-title">NETWORK STATUS:</h3>
+              <p class="status" id="net-status">—</p>
+              <ul class="kv dotted" id="net-stats">
+                <li><span>Commits (1y)</span><b data-stat="commitsYear">—</b></li>
+                <li><span>Pull requests</span><b data-stat="pullRequests">—</b></li>
+                <li><span>Issues</span><b data-stat="issues">—</b></li>
+                <li><span>Longest streak</span><b data-stat="longestStreak">—</b></li>
+                <li><span>Followers</span><b data-stat="followers">—</b></li>
+                <li><span>On GitHub</span><b data-stat="yearsLabel">—</b></li>
+              </ul>
+            </div>
+            <div class="panel hud node">
+              <h3 class="panel-title">NODE // TR <span class="chev" aria-hidden="true">››</span></h3>
+              <div class="node-body">
+                <div class="radar" aria-hidden="true"><i></i></div>
+                <ul class="kv small">
+                  <li><span>GEO</span><b>41.0°N 37.9°E</b></li>
+                  <li><span>ZONE</span><b>UTC+03:00</b></li>
+                  <li><span>UPTIME</span><b id="uptime">—</b></li>
+                  <li><span>SYNC</span><b id="sync">—</b></li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================================================================ LINKS -->
+      <section id="view-links" data-view="links" class="view" role="tabpanel" aria-label="Links">
+        <div class="contact">
+          <svg class="rabbit static" id="rabbit-links" viewBox="0 0 100 120" aria-hidden="true"></svg>
+          <h2 class="contact-title">Contact me…!</h2>
+          <p class="contact-sub">Knock, knock. <span class="muted">Pick a door.</span></p>
+          <div class="link-grid" id="link-grid"></div>
+          <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer-big">THINK &amp; DO</p>
+      <p>levántarse y brillar · © <span id="year">2026</span> Kazım Anıl Aydın</p>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
