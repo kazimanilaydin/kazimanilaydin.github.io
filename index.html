@@ -98,14 +98,13 @@
               <p class="panel-cap">[ Think &amp; Do ]</p>
             </div>
             <div class="panel hud quick">
-              <h3 class="panel-title">QUICK STATS <span class="chev" aria-hidden="true">››</span></h3>
-              <ul class="kv" id="quick-stats">
-                <li><span>Contributions (1y)</span><b data-stat="contributionsYear">—</b></li>
-                <li><span>Current streak</span><b data-stat="streakLabel">—</b></li>
-                <li><span>Followers</span><b data-stat="followers">—</b></li>
+              <h3 class="panel-title">QUICK FACTS <span class="chev" aria-hidden="true">››</span></h3>
+              <ul class="kv">
+                <li><span>Based in</span><b>Türkiye</b></li>
+                <li><span>Local time</span><b data-local-time>--:--</b></li>
                 <li><span>On GitHub since</span><b>2016</b></li>
+                <li><span>Motto</span><b>Think &amp; Do</b></li>
               </ul>
-              <p class="sample-note" data-sample-note hidden>sample numbers</p>
             </div>
           </aside>
         </div>
@@ -118,62 +117,14 @@
 
       <!-- ================================================================ NETWORK -->
       <section id="view-network" data-view="network" class="view" role="tabpanel" aria-label="Network">
-        <h2 class="net-title">GLOBAL CONNECTIVITY &amp; PERFORMANCE METRICS</h2>
-        <p class="sample-note" data-sample-note hidden>Preview with sample numbers. The live site shows real GitHub data.</p>
-
-        <div class="kpis">
-          <div class="panel hud kpi">
-            <h3 class="panel-title">TOTAL CONTRIBUTIONS <span class="chev" aria-hidden="true">››</span></h3>
-            <div class="kpi-body">
-              <div class="gauge">
-                <svg viewBox="0 0 64 40" aria-hidden="true">
-                  <defs><linearGradient id="gg"><stop offset="0" stop-color="#3be8ff" /><stop offset=".45" stop-color="#3df58a" /><stop offset=".75" stop-color="#ffb84d" /><stop offset="1" stop-color="#ff5d6c" /></linearGradient></defs>
-                  <path d="M6 34a26 26 0 0 1 52 0" fill="none" stroke="url(#gg)" stroke-width="6" stroke-linecap="round" />
-                  <g id="needle" style="transform-origin: 32px 34px"><path d="M30.4 34 32 10l1.6 24Z" fill="#fff" /></g>
-                  <circle cx="32" cy="34" r="4" fill="#081a36" stroke="#fff" stroke-width="1.5" />
-                </svg>
-                <span id="contrib-level">—</span>
-              </div>
-              <div>
-                <p class="big" id="contrib-total">—</p>
-                <p class="unit">last 12 months</p>
-                <svg class="spark" id="contrib-spark" viewBox="0 0 140 24" preserveAspectRatio="none" aria-hidden="true"></svg>
-              </div>
-            </div>
-          </div>
-          <div class="panel hud kpi">
-            <h3 class="panel-title">CURRENT STREAK <span class="chev" aria-hidden="true">››</span></h3>
-            <div class="kpi-row">
-              <p class="big"><span id="streak">—</span> <small>days</small></p>
-              <p class="kpi-right"><span class="ok" id="streak-state">—</span><span class="unit" id="streak-longest"></span></p>
-            </div>
-            <div class="bars" id="daily-bars" aria-hidden="true"></div>
-          </div>
-          <div class="panel hud kpi">
-            <h3 class="panel-title">ACTIVE DAYS <span class="chev" aria-hidden="true">››</span></h3>
-            <div class="kpi-body">
-              <div class="ring">
-                <svg viewBox="0 0 64 64" aria-hidden="true">
-                  <defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#2f7bff" /><stop offset="1" stop-color="#3be8ff" /></linearGradient></defs>
-                  <circle cx="32" cy="32" r="25" fill="none" stroke="#1d3f6b" stroke-width="5" />
-                  <circle id="ring" cx="32" cy="32" r="25" fill="none" stroke="url(#rg)" stroke-width="5" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 32 32)" />
-                </svg>
-                <span id="active-pct">—</span>
-              </div>
-              <div>
-                <p class="big"><span id="active-days">—</span> <small id="active-total">/ 365</small></p>
-                <p class="ok" id="active-word">—</p>
-              </div>
-              <div class="bars months" id="month-bars" aria-hidden="true"></div>
-            </div>
-          </div>
-        </div>
+        <h2 class="net-title">GLOBAL CONNECTIVITY</h2>
 
         <div class="stage">
           <aside class="side">
             <div class="panel hud">
-              <h3 class="panel-title">TOP LANGUAGES <span class="chev" aria-hidden="true">››</span></h3>
-              <ul class="langs" id="langs"><li class="muted">loading…</li></ul>
+              <h3 class="panel-title">ROUTES // FROM ORDU <span class="chev" aria-hidden="true">››</span></h3>
+              <ul class="routes" id="routes"></ul>
+              <p class="panel-cap">select a route to fly there</p>
             </div>
             <div class="panel hud hello small">
               <h3 class="panel-title">HELLO.EXE</h3>
@@ -189,18 +140,6 @@
           </div>
 
           <aside class="side">
-            <div class="panel hud">
-              <h3 class="panel-title">NETWORK STATUS:</h3>
-              <p class="status" id="net-status">—</p>
-              <ul class="kv dotted" id="net-stats">
-                <li><span>Commits (1y)</span><b data-stat="commitsYear">—</b></li>
-                <li><span>Pull requests</span><b data-stat="pullRequests">—</b></li>
-                <li><span>Issues</span><b data-stat="issues">—</b></li>
-                <li><span>Longest streak</span><b data-stat="longestStreak">—</b></li>
-                <li><span>Followers</span><b data-stat="followers">—</b></li>
-                <li><span>On GitHub</span><b data-stat="yearsLabel">—</b></li>
-              </ul>
-            </div>
             <div class="panel hud node">
               <h3 class="panel-title">NODE // TR <span class="chev" aria-hidden="true">››</span></h3>
               <div class="node-body">
@@ -208,10 +147,15 @@
                 <ul class="kv small">
                   <li><span>GEO</span><b>41.0°N 37.9°E</b></li>
                   <li><span>ZONE</span><b>UTC+03:00</b></li>
-                  <li><span>UPTIME</span><b id="uptime">—</b></li>
-                  <li><span>SYNC</span><b id="sync">—</b></li>
+                  <li><span>LOCAL</span><b data-local-time>--:--</b></li>
+                  <li><span>SINCE</span><b>2016</b></li>
                 </ul>
               </div>
+            </div>
+            <div class="panel hud signal">
+              <h3 class="panel-title">SIGNAL <i class="dot" aria-hidden="true"></i></h3>
+              <p class="signal-big">THINK &amp; DO</p>
+              <p class="panel-cap">levántarse y brillar</p>
             </div>
           </aside>
         </div>

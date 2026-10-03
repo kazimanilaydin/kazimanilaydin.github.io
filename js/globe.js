@@ -1,7 +1,7 @@
 // WebGL globe for the Network tab (globe.gl, loaded only when the tab opens).
 
-const HOME = { name: 'Ordu, TR', lat: 40.98, lng: 37.88 };
-const CITIES = [
+export const HOME = { name: 'Ordu, TR', lat: 40.98, lng: 37.88 };
+export const CITIES = [
   { name: 'Vilnius', lat: 54.69, lng: 25.28 },
   { name: 'London', lat: 51.51, lng: -0.13 },
   { name: 'New York', lat: 40.71, lng: -74.01 },
@@ -67,7 +67,7 @@ function arcsData() {
 export async function mountGlobe(el) {
   if (!hasWebGL()) {
     el.innerHTML = '<div class="globe-fallback" role="img" aria-label="Rotating Earth"></div>';
-    return { pause() {}, resume() {} };
+    return { pause() {}, resume() {}, focus() {} };
   }
   const Globe = await loadLibrary();
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -125,8 +125,16 @@ export async function mountGlobe(el) {
   globe.onGlobeReady(() => requestAnimationFrame(fit));
   fit();
 
+  let spinAgain;
   return {
     pause: () => globe.pauseAnimation(),
     resume: () => globe.resumeAnimation(),
+    // Fly to a city, hold for a moment, then go back to spinning.
+    focus({ lat, lng }) {
+      controls.autoRotate = false;
+      globe.pointOfView({ lat, lng, altitude: 2.1 }, reduced ? 0 : 1400);
+      clearTimeout(spinAgain);
+      if (!reduced) spinAgain = setTimeout(() => (controls.autoRotate = true), 5000);
+    },
   };
 }

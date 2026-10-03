@@ -5,7 +5,6 @@
   "description": "kazimanilaydin.github.io — Think & Do",
   "scripts": {
     "build:icons": "node tools/build-icons.mjs",
-    "build:stats": "node tools/build-stats.mjs data/stats.json",
     "serve": "npx --yes http-server -c-1 -p 8080 ."
   },
   "engines": {

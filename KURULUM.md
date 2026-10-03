@@ -2,15 +2,12 @@
 
 ## github.io sitesi
 
-Site bu repoda (`kazimanilaydin.github.io`). Yayına almak için:
+Site statiktir ve bu repoda durur; GitHub Pages dosyaları doğrudan `master` branch'inden yayınlar.
 
-1. Bu branch'i `master`'a birleştir. Eski Vue sitesi git geçmişinde kalır.
-2. GitHub'da **Settings → Pages → Build and deployment → Source: GitHub Actions** seçeneğini seç.
-3. **Deploy site** workflow'u `master`'a her push'ta siteyi yayınlar ve her 6 saatte bir canlı
-   istatistikleri (`data/stats.json`) yeniler. Elle başlatmak için **Actions → Deploy site → Run workflow**.
-
-`github-profile/` klasörü GitHub profil README kitidir. `tools/build-stats.mjs` de onu kullandığı
-için bu repoda kalmalıdır.
+1. GitHub'da **Settings → Pages → Build and deployment → Source: Deploy from a branch** seç.
+2. Branch olarak `master`, klasör olarak `/ (root)` seç ve **Save** de.
+3. Birkaç dakika içinde site https://kazimanilaydin.github.io adresinde açılır. Sonraki her push
+   otomatik yayınlanır.
 
 ### Yerelde deneme
 
@@ -18,17 +15,14 @@ için bu repoda kalmalıdır.
 npm run serve        # http://localhost:8080
 ```
 
-`data/stats.json` yoksa site GitHub'ın herkese açık API'sini kullanır (saatte 60 istek, tarayıcıda
-1 saat önbelleklenir). Commit, PR ve issue sayıları ile katkı takvimi en doğru haliyle workflow'dan gelir.
-
 ## Özelleştirme
 
 | Ne | Nerede |
 | --- | --- |
-| Metinler (daktilo satırları, roller, neofetch) | `index.html` ve `js/app.js` başındaki sabitler |
+| Metinler (daktilo satırları, roller, neofetch, paneller) | `index.html` ve `js/app.js` başındaki sabitler |
 | Linkler | `js/app.js` → `LINKS` |
 | Teknoloji yığını | `js/app.js` → `STACK` (yeni ikon için `tools/build-icons.mjs` → `npm run build:icons`) |
-| Globe şehirleri ve yaylar | `js/globe.js` → `HOME`, `CITIES`, `CROSS` |
+| Globe şehirleri, yaylar ve rota listesi | `js/globe.js` → `HOME`, `CITIES`, `CROSS` |
 | Renkler | `css/style.css` → `:root` |
 | Dünya dokusu | `tools/make-earth-texture.py` |
 

@@ -1,10 +1,9 @@
 import { ICONS } from './icons.js';
-import { loadStats, derive } from './data.js';
+import { HOME, CITIES, mountGlobe } from './globe.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const nf = (n) => (n == null || Number.isNaN(n) ? '—' : Math.round(n).toLocaleString('en-US'));
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // ------------------------------------------------------------------ content
@@ -108,7 +107,11 @@ window.addEventListener('resize', () => moveInk($(`.tabs a[data-tab="${current}"
 
 function clock() {
   const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Istanbul', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-  const tick = () => ($('#clock').textContent = `TR ${fmt.format(new Date())}`);
+  const tick = () => {
+    const time = fmt.format(new Date());
+    $('#clock').textContent = `TR ${time}`;
+    $$('[data-local-time]').forEach((el) => (el.textContent = time.slice(0, 5)));
+  };
   tick();
   setInterval(tick, 1000);
 }
@@ -276,72 +279,25 @@ function renderLinks() {
   $('#marquee').innerHTML = words;
 }
 
-// ------------------------------------------------------------------ network data
+// ------------------------------------------------------------------ routes
 
-function sparkline(svg, values) {
-  if (!values.length) return;
-  const max = Math.max(1, ...values);
-  const pts = values.map((v, i) => [(140 * i) / Math.max(1, values.length - 1), 22 - (20 * v) / max]);
-  const d = 'M' + pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join('L');
-  const [lx, ly] = pts[pts.length - 1];
-  svg.innerHTML =
-    `<defs><linearGradient id="sf" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3be8ff" stop-opacity=".35"/><stop offset="1" stop-color="#3be8ff" stop-opacity="0"/></linearGradient></defs>` +
-    `<path d="${d}L140 24L0 24Z" fill="url(#sf)"/><path d="${d}" fill="none" stroke="#3be8ff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>` +
-    `<circle cx="${lx}" cy="${ly}" r="2.5" fill="#fff"/>`;
-}
+const distanceKm = (a, b) => {
+  const rad = Math.PI / 180;
+  const h = Math.sin(((b.lat - a.lat) * rad) / 2) ** 2 +
+    Math.cos(a.lat * rad) * Math.cos(b.lat * rad) * Math.sin(((b.lng - a.lng) * rad) / 2) ** 2;
+  return 6371 * 2 * Math.asin(Math.sqrt(h));
+};
 
-function bars(el, values) {
-  const max = Math.max(1, ...values);
-  el.innerHTML = values.map((v, i) => `<i style="height:${Math.max(6, (100 * v) / max)}%;opacity:${(0.35 + (0.65 * v) / max).toFixed(2)};animation-delay:${(0.3 + i * 0.03).toFixed(2)}s"></i>`).join('');
-}
-
-function fillStats(p) {
-  const s = derive(p);
-  $$('[data-sample-note]').forEach((el) => (el.hidden = !p.sample));
-  const values = {
-    ...p,
-    longestStreak: s.hasCalendar ? `${s.longestStreak}d` : '—',
-    streakLabel: s.hasCalendar ? `${s.currentStreak}d` : '—',
-    yearsLabel: `${Math.floor(s.years)} yrs`,
-  };
-  $$('[data-stat]').forEach((el) => {
-    const v = values[el.dataset.stat];
-    el.textContent = typeof v === 'number' ? nf(v) : v ?? '—';
+// Same order and colours as the arcs drawn by globe.js.
+function renderRoutes(root, onPick) {
+  root.innerHTML = CITIES.map((c, i) =>
+    `<li><button type="button" class="route" data-i="${i}"><i class="${i % 2 ? 'gold' : 'cyan'}"></i><span>${c.name}</span><b>${Math.round(distanceKm(HOME, c)).toLocaleString('en-US')} km</b></button></li>`).join('');
+  root.addEventListener('click', (e) => {
+    const btn = e.target.closest('.route');
+    if (!btn) return;
+    $$('.route', root).forEach((r) => r.classList.toggle('active', r === btn));
+    onPick(CITIES[btn.dataset.i]);
   });
-
-  const contrib = p.contributionsYear;
-  if (contrib != null) {
-    $('#contrib-total').textContent = nf(contrib);
-    $('#contrib-level').textContent = contrib >= 1000 ? 'Elite' : contrib >= 500 ? 'High' : contrib >= 200 ? 'Active' : contrib >= 50 ? 'Steady' : 'Warming up';
-    const angle = -90 + 180 * Math.min(1, Math.log1p(contrib) / Math.log1p(1500));
-    requestAnimationFrame(() => ($('#needle').style.transform = `rotate(${angle}deg)`));
-  }
-  if (s.hasCalendar) {
-    sparkline($('#contrib-spark'), s.weekly.slice(-26));
-    $('#streak').textContent = nf(s.currentStreak);
-    $('#streak-state').textContent = s.currentStreak >= 7 ? 'On fire' : s.currentStreak >= 1 ? 'Active' : 'Standby';
-    $('#streak-longest').textContent = `longest ${s.longestStreak}d`;
-    bars($('#daily-bars'), s.daily);
-    const pct = (100 * s.activeDays) / Math.max(1, s.totalDays);
-    $('#active-days').textContent = nf(s.activeDays);
-    $('#active-total').textContent = `/ ${s.totalDays}`;
-    $('#active-pct').textContent = `${Math.round(pct)}%`;
-    $('#active-word').textContent = pct >= 60 ? 'Excellent' : pct >= 35 ? 'Great' : pct >= 15 ? 'Good' : 'Warming up';
-    requestAnimationFrame(() => $('#ring').setAttribute('stroke-dasharray', `${pct.toFixed(1)} 100`));
-    bars($('#month-bars'), s.monthly);
-  }
-
-  const status = s.daysSinceActive <= 7 ? ['OPTIMAL', 'var(--ok)'] : s.daysSinceActive <= 30 ? ['ONLINE', 'var(--ok)'] : s.hasCalendar ? ['STANDBY', 'var(--gold)'] : ['ONLINE', 'var(--ok)'];
-  $('#net-status').textContent = status[0];
-  $('#net-status').style.color = status[1];
-  $('#uptime').textContent = `${s.years.toFixed(1)} yrs`;
-  $('#sync').textContent = (p.generatedAt ?? new Date().toISOString()).slice(0, 10);
-
-  const langs = (p.languages ?? []).slice(0, 5);
-  const total = (p.languages ?? []).reduce((n, l) => n + l.size, 0) || 1;
-  $('#langs').innerHTML = langs.length
-    ? langs.map((l, i) => `<li><div class="row"><i style="background:${l.color}"></i>${l.name}<b>${((100 * l.size) / total).toFixed(1)}%</b></div><div class="track"><span style="width:${((100 * l.size) / langs[0].size).toFixed(1)}%;animation-delay:${0.2 + i * 0.12}s"></span></div></li>`).join('')
-    : '<li class="muted">no data</li>';
 }
 
 // ------------------------------------------------------------------ boot
@@ -363,10 +319,11 @@ function boot() {
   renderLinks();
 
   let globe = null;
+  renderRoutes($('#routes'), async (city) => (await globe)?.focus(city));
   listeners.network = {
     async enter() {
       if (!globe) {
-        globe = import('./globe.js').then((m) => m.mountGlobe($('#globe'))).catch((err) => {
+        globe = mountGlobe($('#globe')).catch((err) => {
           console.error(err);
           $('#globe').innerHTML = '<div class="globe-fallback" role="img" aria-label="Rotating Earth"></div>';
           return null;
@@ -378,8 +335,6 @@ function boot() {
       (await globe)?.pause();
     },
   };
-
-  loadStats().then(fillStats).catch((err) => console.warn('stats unavailable', err));
 
   show(location.hash.slice(1) || 'profile');
   document.fonts?.ready.then(() => moveInk($(`.tabs a[data-tab="${current}"]`)));
